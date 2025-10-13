@@ -40,6 +40,36 @@ body {
   transition: width 0.3s ease;
 }
 
+
+.highlight-yellow {
+  background-color: #fef08a;
+}
+
+.highlight-blue {
+  background-color: #8adbfe;
+}
+
+.highlight-red {
+  background-color: #fe8a8a;
+}
+
+.highlight-green {
+  background-color: #affe8a;
+}
+
+.highlight-gray {
+  background-color: #95989b;
+}
+
+
+.underline {
+  text-decoration: underline;
+}
+
+a {
+  color: #222;
+}
+
 .main-content {
   display: flex;
   flex-direction: column;
@@ -125,9 +155,12 @@ body {
   width: 100%;
 }
 
-.hero {
+section {
   margin: 3rem 2rem;
-  background-color: burlywood;
-  padding: 1.5rem 2rem;
+   padding: 1.5rem 2rem;
+}
 
+.hero {
+  background-color: burlywood;
+ 
 }

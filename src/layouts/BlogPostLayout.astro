@@ -1,0 +1,198 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import "../styles/global.css";
+import BlogFooter from "../components/BlogFooter.astro";
+
+const { frontmatter } = Astro.props;
+const { title, date, tags = [] } = frontmatter;
+
+// Build breadcrumb dynamically from the URL
+const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
+const breadcrumbItems = pathSegments.map((segment, index) => {
+  const href = "/" + pathSegments.slice(0, index + 1).join("/");
+  const isLast = index === pathSegments.length - 1;
+  const name = segment
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return { name, href, isLast };
+});
+
+const formattedDate = date
+  ? new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : "";
+---
+
+
+<BaseLayout pageTitle={title}>
+  <div class="blog-container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      {
+        breadcrumbItems.map((item) => (
+          <>
+            {" / "}
+            {item.isLast ? (
+              <span>{item.name}</span>
+            ) : (
+              <a href={item.href}>{item.name}</a>
+            )}
+          </>
+        ))
+      }
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+      <h1>{title}</h1>
+      {formattedDate && <p class="post-date">{formattedDate}</p>}
+
+      {
+        tags.length > 0 && (
+          <div class="tags">
+            {tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )
+      }
+    </header>
+
+    <!-- Blog Content -->
+    <article class="blog-content">
+      <slot />
+    </article>
+
+    <div class="blog-signoff">
+      <p>by <span class="author-name">Kay</span>,</p>
+      <div class="signoff-msg">
+        <p>See you until next time!</p>
+        <button class="back-to-top" id="backToTop">Back to top ▲</button>
+      </div>
+    </div>
+
+    <!-- Blog Footer -->
+    <BlogFooter />
+
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+    line-height: 1.7;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    text-decoration: none;
+    color: #333;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 1;
+  }
+
+  /* Blog Header */
+  .blog-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+  }
+
+  .blog-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-date {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Tags */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background-color: rgba(95, 158, 160, 0.15);
+    color: #2a5555;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Blog Content */
+  .blog-content {
+    font-size: 1rem;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+
+  .blog-content h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  /* .blog-content p {
+    margin: 1.5rem 0 !important;
+  } */
+
+  .blog-signoff {
+    margin-top: 3rem;
+    text-align: left;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .blog-signoff .author-name {
+    font-family: "WindSong", cursive; /* or any custom font you want */
+    font-size: 1rem;
+    /* text-transform: uppercase; */
+  }
+
+  .signoff-msg {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: red; */
+  }
+
+  .back-to-top {
+    padding: 0.4rem 0.6rem;
+    color: #333;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    text-decoration: underline;
+
+  }
+</style>
+
+<script>
+  document.getElementById("backToTop").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
