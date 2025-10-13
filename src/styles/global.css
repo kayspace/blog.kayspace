@@ -1,0 +1,133 @@
+@font-face {
+  font-family: GeistMono;
+  src: url(/GeistMono-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: WindSong;
+  src: url(/WindSong-Regular.woff2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: GeistMono, "Courier New", monospace;
+  background-color: #f5f5f5;
+  color: #000;
+  overflow-x: hidden;
+  font-weight: normal;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* utils class */
+
+.underline-util-class {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  /* background-color: aquamarine; */
+}
+
+/* Navbar */
+
+.navbar {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(245, 245, 245, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  /* max-width: 72rem; */
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: cadetblue;
+}
+
+.nav-right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 2rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.logo {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.nav-link {
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0.7;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 320px) {
+  .nav-links {
+    font-size: 0.675rem;
+  }
+}
+
+.nav-link:hover,
+.nav-link.active {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+.nav-link-underline {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover .nav-link-underline,
+.nav-link.active .nav-link-underline {
+  width: 100%;
+}
+
+.hero {
+  margin: 3rem 2rem;
+  background-color: burlywood;
+  padding: 1.5rem 2rem;
+
+}

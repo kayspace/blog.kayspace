@@ -1,16 +1,38 @@
 ---
-
+import "../styles/global.css";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Blog | Kayspace</title>
+  </head>
+  <body>
+    <div class="main-content">
+      <nav class="navbar">
+        <!-- <div class="nav-left"><a class="nav-link logo " href="">blog.kayspace</a></div> -->
+        <div class="nav-right">
+          <a class="nav-link" href=""
+            >home<div class="nav-link-underline"></div></a
+          >
+          <a class="nav-link" href=""
+            >posts <div class="nav-link-underline"></div></a
+          >
+          <a class="nav-link" href="https://kayspace.vercel.app"
+            >portfolio◀<div class="nav-link-underline"></div></a
+          >
+        </div>
+      </nav>
+
+			<section class="hero">
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius quos odit assumenda deleniti sint veritatis a magnam quas, asperiores ullam, officia nisi optio eaque tempore. Atque explicabo est totam perspiciatis!</p>
+				<br>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nihil necessitatibus enim repellat quod aliquam ipsa dignissimos porro eum minima. Doloribus, culpa ab vel suscipit recusandae quisquam! Voluptatibus, magnam animi.</p>
+			</section>
+
+    </div>
+  </body>
 </html>
