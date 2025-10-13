@@ -74,6 +74,7 @@ a {
   display: flex;
   flex-direction: column;
   /* background-color: aquamarine; */
+
 }
 
 /* Navbar */
@@ -155,12 +156,3 @@ a {
   width: 100%;
 }
 
-section {
-  margin: 3rem 2rem;
-   padding: 1.5rem 2rem;
-}
-
-.hero {
-  background-color: burlywood;
- 
-}

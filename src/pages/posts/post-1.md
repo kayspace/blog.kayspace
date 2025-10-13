@@ -36,19 +36,19 @@ This is a **Creative Commons Attribution-NoDerivatives 4.0 International License
 
 When you share, republish, or reuse my posts, you must:
 
-1. **Keep authors name and credit author** - Say who wrote it
-2. **Link back** - Include a link to the original post on my blog
-3. **Keep the license notice** - Let people know it's under CC BY-ND 4.0
-4. **Don't claim you created it** - Be honest about the original author
+- **Keep authors name and credit author** - Say who wrote it
+- **Link back** - Include a link to the original post on my blog
+- **Keep the license notice** - Let people know it's under CC BY-ND 4.0
+- **Don't claim you created it** - Be honest about the original author
 
 ---
 
 ## Important Stuff
 
-- **No warranty** - My posts are shared "as-is". I don't guarantee they're perfect or error-free
-- **No liability** - I'm not responsible if something goes wrong from reading my content
-- **This is permanent** - Once I license my content this way, I can't take it back
-- **If you break the rules** - Your permission to share automatically ends, but you get 30 days to fix it
+  - **No warranty** - My posts are shared "as-is". I don't guarantee they're perfect or error-free
+  - **No liability** - I'm not responsible if something goes wrong from reading my content
+  - **This is permanent** - Once I license my content this way, I can't take it back
+  - **If you break the rules** - Your permission to share automatically ends, but you get 30 days to fix it
 
 ---
 

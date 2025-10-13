@@ -2,20 +2,10 @@
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/global.css";
 import BlogFooter from "../components/BlogFooter.astro";
+import BlogNavigation from "../components/BlogNavigation.astro";
 
 const { frontmatter } = Astro.props;
 const { title, date, tags = [] } = frontmatter;
-
-// Build breadcrumb dynamically from the URL
-const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
-const breadcrumbItems = pathSegments.map((segment, index) => {
-  const href = "/" + pathSegments.slice(0, index + 1).join("/");
-  const isLast = index === pathSegments.length - 1;
-  const name = segment
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-  return { name, href, isLast };
-});
 
 const formattedDate = date
   ? new Date(date).toLocaleDateString("en-US", {
@@ -26,25 +16,9 @@ const formattedDate = date
   : "";
 ---
 
-
 <BaseLayout pageTitle={title}>
   <div class="blog-container">
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb">
-      <a href="/">Home</a>
-      {
-        breadcrumbItems.map((item) => (
-          <>
-            {" / "}
-            {item.isLast ? (
-              <span>{item.name}</span>
-            ) : (
-              <a href={item.href}>{item.name}</a>
-            )}
-          </>
-        ))
-      }
-    </nav>
+    <BlogNavigation />
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -63,48 +37,36 @@ const formattedDate = date
     </header>
 
     <!-- Blog Content -->
-    <article class="blog-content">
+    <section class="blog-content">
       <slot />
-    </article>
+    </section>
 
-    <div class="blog-signoff">
+    <section class="blog-signoff">
       <p>by <span class="author-name">Kay</span>,</p>
       <div class="signoff-msg">
         <p>See you until next time!</p>
         <button class="back-to-top" id="backToTop">Back to top ▲</button>
       </div>
-    </div>
+    </section>
 
     <!-- Blog Footer -->
     <BlogFooter />
-
   </div>
 </BaseLayout>
 
 <style>
   .blog-container {
-    max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 2rem 4rem;
+    padding: 2rem 4rem 4rem;
     line-height: 1.7;
+    /* background-color: darkkhaki; */
   }
 
-  /* Breadcrumb */
-  .breadcrumb {
-    font-size: 0.875rem;
-    color: #555;
-    margin-bottom: 1.5rem;
-  }
-
-  .breadcrumb a {
-    text-decoration: none;
-    color: #333;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-  }
-
-  .breadcrumb a:hover {
-    opacity: 1;
+  @media (max-width: 768px) {
+    .blog-container {
+      /* margin: 0 auto; */
+      padding: 2rem 2rem 4rem;
+    }
   }
 
   /* Blog Header */
@@ -136,10 +98,10 @@ const formattedDate = date
   .tag {
     background-color: rgba(95, 158, 160, 0.15);
     color: #2a5555;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
     font-size: 0.75rem;
-    letter-spacing: 0.05em;
+   
   }
 
   /* Blog Content */
@@ -187,7 +149,6 @@ const formattedDate = date
     cursor: pointer;
     background: transparent;
     text-decoration: underline;
-
   }
 </style>
 

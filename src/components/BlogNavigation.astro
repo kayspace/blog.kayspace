@@ -1,0 +1,48 @@
+---
+// Build breadcrumb dynamically from the URL
+const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
+const breadcrumbItems = pathSegments.map((segment, index) => {
+  const href = "/" + pathSegments.slice(0, index + 1).join("/");
+  const isLast = index === pathSegments.length - 1;
+  const name = segment
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return { name, href, isLast };
+});
+---
+
+<nav class="breadcrumb">
+  <a href="/">Home</a>
+  {
+    breadcrumbItems.map((item) => (
+      <>
+        {" / "}
+        {item.isLast ? (
+          <span>{item.name}</span>
+        ) : (
+          <a href={item.href}>{item.name}</a>
+        )}
+      </>
+    ))
+  }
+</nav>
+
+<style>
+  /* Breadcrumb */
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    text-decoration: none;
+    color: #333;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 1;
+  }
+</style>
