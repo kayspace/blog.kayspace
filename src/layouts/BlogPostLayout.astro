@@ -42,7 +42,7 @@ const formattedDate = date
     </section>
 
     <section class="blog-signoff">
-      <p>by <span class="author-name">Kay</span>,</p>
+      <p>by <span class="author-name">kay</span>,</p>
       <div class="signoff-msg">
         <p>See you until next time!</p>
         <button class="back-to-top" id="backToTop">Back to top ▲</button>
@@ -54,10 +54,10 @@ const formattedDate = date
   </div>
 </BaseLayout>
 
-<style>
+<style is:global>
   .blog-container {
     margin: 0 auto;
-    padding: 2rem 4rem 4rem;
+    padding: 2rem 4rem 2rem;
     line-height: 1.7;
     /* background-color: darkkhaki; */
   }
@@ -65,7 +65,7 @@ const formattedDate = date
   @media (max-width: 768px) {
     .blog-container {
       /* margin: 0 auto; */
-      padding: 2rem 2rem 4rem;
+      padding: 2rem 2rem 2rem;
     }
   }
 
@@ -77,7 +77,7 @@ const formattedDate = date
   }
 
   .blog-header h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
   }
 
@@ -114,8 +114,12 @@ const formattedDate = date
   }
 
   .blog-content h2 {
-    margin-top: 2rem;
-    font-size: 1.5rem;
+    /* margin-top: 2rem; */
+    font-size: 1.25rem;
+  }
+
+  .blog-content p {
+    font-size: 0.9rem;
   }
 
   /* .blog-content p {
@@ -125,12 +129,12 @@ const formattedDate = date
   .blog-signoff {
     margin-top: 3rem;
     text-align: left;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #333;
   }
 
   .blog-signoff .author-name {
-    font-family: "WindSong", cursive; /* or any custom font you want */
+    font-family: "WindSong", cursive; 
     font-size: 1rem;
     /* text-transform: uppercase; */
   }
@@ -149,6 +153,7 @@ const formattedDate = date
     cursor: pointer;
     background: transparent;
     text-decoration: underline;
+    font-size: 0.8rem;
   }
 </style>
 

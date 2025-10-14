@@ -28,6 +28,11 @@ body {
   min-height: 100vh;
 }
 
+::selection {
+  background-color: rgba(249, 196, 215, 0.4); 
+  color: #2a2a2a; 
+}
+
 /* utils class */
 
 .underline-util-class {
@@ -40,41 +45,67 @@ body {
   transition: width 0.3s ease;
 }
 
-
-.highlight-yellow {
-  background-color: #fef08a;
+.highlight-pink {
+  background-color: rgba(249, 196, 215, 0.2);
+  color: #f7b1ca;
 }
 
-.highlight-blue {
-  background-color: #8adbfe;
+.highlight-lilac {
+  background-color: rgba(210, 190, 255, 0.2);
+  color: #cdb7f6;
 }
 
-.highlight-red {
-  background-color: #fe8a8a;
+.highlight-mint {
+  background-color: rgba(180, 255, 223, 0.2);
+  color: #9ce0c5;
 }
 
-.highlight-green {
-  background-color: #affe8a;
+.highlight-peach {
+  background-color: rgba(255, 212, 186, 0.2);
+  color: #f7bfa0;
 }
 
-.highlight-gray {
-  background-color: #95989b;
+.highlight-sky {
+  background-color: rgba(186, 227, 255, 0.2);
+  color: #9ccffb;
 }
 
+.highlight-lemon {
+  background-color: rgba(255, 251, 186, 0.2);
+  color: #f2e787;
+}
+
+.highlight-sage {
+  background-color: rgba(200, 231, 207, 0.2);
+  color: #96cfa2;
+}
+
+.highlight-lavender {
+  background-color: rgba(230, 210, 255, 0.2);
+  color: #cba4fa;
+}
 
 .underline {
   text-decoration: underline;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  text-decoration-color: #2a5555b5;
 }
 
 a {
   color: #222;
 }
 
+.author {
+  font-family: "WindSong", cursive;
+}
+
 .main-content {
   display: flex;
   flex-direction: column;
   /* background-color: aquamarine; */
-
 }
 
 /* Navbar */
@@ -85,9 +116,9 @@ a {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(245, 245, 245, 0.95);
+  /* background-color: rgba(245, 245, 245, 0.95); */
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  /* border-bottom: 1px solid rgba(229, 231, 235, 0.5); */
   /* max-width: 72rem; */
   margin: 0 auto;
   padding: 1.5rem 2rem;
@@ -96,7 +127,8 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .nav-right {
@@ -155,4 +187,3 @@ a {
 .nav-link.active .nav-link-underline {
   width: 100%;
 }
-

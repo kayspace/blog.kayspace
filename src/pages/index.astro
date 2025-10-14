@@ -3,25 +3,237 @@ import Navigation from "../components/Navigation.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
+const allPosts = Object.values(
+  import.meta.glob("./posts/*.md", { eager: true })
+);
+
+// Sort posts by date (latest first) and get top 3 latest posts
+const latestPosts = allPosts
+  .map((post) => {
+    const dateObj = post.frontmatter.date
+      ? new Date(post.frontmatter.date)
+      : null;
+    const slug = post.file.split("/").pop().replace(".md", "");
+    return {
+      ...post,
+      url: `/posts/${slug}`,
+      dateObj,
+    };
+  })
+  .sort((a, b) => b.dateObj - a.dateObj)
+  .slice(0, 3);
+
 const pageTitle = "Blog | Kayspace";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <Navigation/>
-  <section class="hero">
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius quos odit
-      assumenda deleniti sint veritatis a magnam quas, asperiores ullam, officia
-      nisi optio eaque tempore. Atque explicabo est totam perspiciatis!
-    </p>
-    <br />
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nihil
-      necessitatibus enim repellat quod aliquam ipsa dignissimos porro eum
-      minima. Doloribus, culpa ab vel suscipit recusandae quisquam!
-      Voluptatibus, magnam animi.
-    </p>
-  </section>
+  <Navigation />
+  <div class="home-container">
 
-  <section class="blog-feed-preview"></section>
+    <section class="about-me">
+      <h2>About Me</h2>
+      <p>
+        Hi There! I go by nickname: <span class="author">kay</span>. Instead of
+        some boring intro, I will just list some of my fav's, maybe u can get a
+        gist of me. <br />
+        <span
+          >fav show: <a href="https://myrunningman.com">Running Man</a>
+        </span>,
+        <span
+          >fav drama: <a href="https://www.imdb.com/title/tt9772814/">Kill It</a
+          >
+        </span>,
+        <span
+          >fav book: <a
+            href="https://www.goodreads.com/book/show/63122650-beyond-thoughts"
+            >Beyond Thoughts</a
+          >
+        </span>,
+        <span>fav game: <a href="https://en.toram.jp/">Toram Online</a> </span>,
+        <span
+          >go to playlist: <a
+            href="https://open.spotify.com/playlist/5SzehtDDw4cshR00jhvKfL?si=48611a6592a241e8"
+            >my playlist ♬</a
+          >
+        </span>
+      </p>
+    </section>
+
+    <section class="about-blog">
+      <h2>About the Blog</h2>
+      <p>
+        There is no particular theme that the posts will stick to, I will just
+        write random things xd. If you are here for <span
+          class="strikethrough highlight-lavender"
+          >some cool techy content then this might not be the right place</span
+        >.
+      </p>
+      <p>
+        Every post here is entirely written by me using my not so much limited
+        vocabulary ⚆_⚆!, from my own thoughts, perspectives and experiences.
+        This is <span class="highlight-peach">not AI-generated content</span>,
+        and posts are not copied or adapted from other sources.
+      </p>
+    </section>
+
+    <section class="top3-latest-posts">
+      <h2>Latest Posts</h2>
+      <div class="posts-list">
+        {
+          latestPosts.map((post) => {
+            const { title, tags = [] } = post.frontmatter;
+            const formattedDate = post.dateObj
+              ? post.dateObj.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              : "";
+            return (
+              <article class="post-card">
+                <div class="post-header">
+                  <a href={post.url} class="post-title">
+                    {title}
+                  </a>
+                  {formattedDate && (
+                    <span class="post-date">{formattedDate}</span>
+                  )}
+                </div>
+                {tags.length > 0 && (
+                  <div class="post-tags">
+                    {tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+                <hr class="post-separator" />
+              </article>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <section class="socials">
+      <h2>Wanna reach out ?</h2>
+      <p>
+        For collaborations or inquiries about using the content or the code, or
+        just wanna say hi! reach out to me at: <br />
+        <br />
+        <span
+          >Mail: <a href="mailto:kayzspace@outlook.com">kayzspace@outlook.com</a
+          ></span
+        > , Github: <span
+          ><a href="https://github.com/kayspace">kayspace</a></span
+        >
+        <span
+          >, Content License: <a
+            href="https://github.com/kayspace/blog.kayspace/blob/master/CONTENT_LICENSE.md"
+            >CC BY-ND 4.0</a
+          ></span
+        >
+      </p>
+    </section>
+
+    <section class="disclaimer">
+      <p>
+        ◬ Disclaimer : I am by no means a professional writer, I am just an
+        amateur. About the writing, I don't guarantee they're perfect or
+        error-free. <span class="highlight-pink"> Any resemblance or overlap with other work is entirely coincidental.</span>
+      </p>
+    </section>
+    
+  </div>
 </BaseLayout>
+
+<style>
+  .home-container {
+    padding: 3rem 4rem 4rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .home-container {
+      padding: 2rem 2rem 4rem;
+    }
+  }
+
+  .about-blog,
+  .about-me,
+  .socials {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .top3-latest-posts h2 {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .disclaimer {
+    font-size: 0.7rem;
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card {
+    padding: 2rem 0 0 0;
+  }
+
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-title:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.875rem;
+    color: #555;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    background-color: rgba(95, 158, 160, 0.15);
+    color: #2a5555;
+  }
+
+  .post-separator {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+  }
+</style>

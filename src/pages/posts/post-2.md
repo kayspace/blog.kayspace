@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-title: "My Second Blog Post"
+title: "Testing Second Blog Post"
 date: 2025-10-14
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
