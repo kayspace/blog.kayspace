@@ -98,6 +98,10 @@ a {
   color: #222;
 }
 
+button {
+  font-family: GeistMono, "Courier New", monospace;
+}
+
 .author {
   font-family: "WindSong", cursive;
 }
