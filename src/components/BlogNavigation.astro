@@ -34,6 +34,21 @@ const breadcrumbItems = pathSegments.map((segment, index) => {
     color: #555;
     margin-bottom: 1.5rem;
     letter-spacing: 0.1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.5rem 4rem;
+    background-color: rgba(245, 245, 245, 0.95);
+    backdrop-filter: blur(8px);
+    /* border: 1px solid red; */
+  }
+
+  @media (max-width: 480px) {
+    .breadcrumb {
+      padding: 1.5rem 2rem;
+    }
   }
 
   .breadcrumb a {

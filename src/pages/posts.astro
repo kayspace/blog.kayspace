@@ -28,8 +28,8 @@ const pageTitle = "Blog Posts";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+  <BlogNavigation />
   <section class="blog-posts-container">
-    <BlogNavigation />
     <PostsList
       postsLatest={postsLatest}
       postsOldest={postsOldest}
@@ -43,6 +43,7 @@ const pageTitle = "Blog Posts";
     padding: 2rem 4rem 4rem;
     font-size: 1rem;
     line-height: 1.6;
+    margin-top: 2rem;
   }
 
   .sorting-section {
@@ -118,9 +119,10 @@ const pageTitle = "Blog Posts";
     margin-top: 0.5rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     .blog-posts-container {
       padding: 2rem 2rem 4rem;
+      margin-top: 3rem;
     }
     .sorting-section {
       justify-content: space-between;

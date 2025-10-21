@@ -17,8 +17,8 @@ const formattedDate = date
 ---
 
 <BaseLayout pageTitle={title}>
+  <BlogNavigation />
   <div class="blog-container">
-    <BlogNavigation />
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -60,9 +60,10 @@ const formattedDate = date
     padding: 2rem 4rem 2rem;
     line-height: 1.7;
     /* background-color: darkkhaki; */
+    margin-top: 3rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     .blog-container {
       /* margin: 0 auto; */
       padding: 2rem 2rem 2rem;
