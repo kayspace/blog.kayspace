@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
 const allPosts = Object.values(
-  import.meta.glob("./posts/*.md", { eager: true })
+  import.meta.glob("./posts/*.md", { eager: true }),
 );
 
 // Sort posts by date (latest first) and get top 3 latest posts
@@ -29,7 +29,6 @@ const pageTitle = "Blog | Kayspace";
 <BaseLayout pageTitle={pageTitle}>
   <Navigation />
   <div class="home-container">
-
     <section class="about-me">
       <h2>About Me</h2>
       <p>
@@ -45,8 +44,8 @@ const pageTitle = "Blog | Kayspace";
         </span>,
         <span
           >fav book: <a
-            href="https://www.goodreads.com/book/show/63122650-beyond-thoughts"
-            >Beyond Thoughts</a
+            href="https://www.goodreads.com/book/show/59734368-perspectives"
+            >Perspectives</a
           >
         </span>,
         <span>fav game: <a href="https://en.toram.jp/">Toram Online</a> </span>,
@@ -139,10 +138,11 @@ const pageTitle = "Blog | Kayspace";
       <p>
         ◬ Disclaimer : I am by no means a professional writer, I am just an
         amateur. About the writing, I don't guarantee they're perfect or
-        error-free. <span class="highlight-pink"> Any resemblance or overlap with other work is entirely coincidental.</span>
+        error-free. <span class="highlight-pink">
+          Any resemblance or overlap with other work is entirely coincidental.</span
+        >
       </p>
     </section>
-    
   </div>
 </BaseLayout>
 
