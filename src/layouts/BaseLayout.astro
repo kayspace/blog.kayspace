@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ThemeToggle from "../components/ThemeToggle.astro";
 
 const { pageTitle } = Astro.props;
 ---
@@ -24,10 +25,23 @@ const { pageTitle } = Astro.props;
 
       gtag("config", "G-8RT8GCEYJB");
     </script>
-    
+  <!-- Theme -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "dark")
+            document.documentElement.classList.add("dark-theme");
+          else if (stored === "light")
+            document.documentElement.classList.remove("dark-theme");
+        } catch (e) {}
+      })();
+    </script>
+
   </head>
   <body>
     <div class="main-content">
+      <ThemeToggle />
       <slot />
     </div>
   </body>

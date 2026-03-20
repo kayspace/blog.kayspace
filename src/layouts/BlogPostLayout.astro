@@ -19,7 +19,6 @@ const formattedDate = date
 <BaseLayout pageTitle={title}>
   <BlogNavigation />
   <div class="blog-container">
-
     <!-- Blog Header -->
     <header class="blog-header">
       <h1>{title}</h1>
@@ -63,6 +62,11 @@ const formattedDate = date
     margin-top: 3rem;
   }
 
+  .blog-content hr {
+    border: none;
+    border-bottom: 1px solid var(--border-color-2);
+  }
+
   @media (max-width: 480px) {
     .blog-container {
       /* margin: 0 auto; */
@@ -102,7 +106,6 @@ const formattedDate = date
     padding: 0.2rem 0.5rem;
     border-radius: 5px;
     font-size: 0.75rem;
-   
   }
 
   /* Blog Content */
@@ -135,9 +138,10 @@ const formattedDate = date
   }
 
   .blog-signoff .author-name {
-    font-family: "WindSong", cursive; 
+    font-family: "WindSong", cursive;
     font-size: 1rem;
     /* text-transform: uppercase; */
+    color: var(--anchors-color);
   }
 
   .signoff-msg {

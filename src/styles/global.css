@@ -34,7 +34,8 @@ html {
   --border-color-2: rgba(0, 0, 0, 0.1);
   --border-color-3: #2a2a28;
   --text-selection-color: rgba(249, 196, 215, 0.4);
-  --strikethrough-line-color: #2a5555b5;
+  --strikethrough-line-color: #de29298a;
+  --anchors-color: #222;
 }
 
 .dark-theme {
@@ -42,9 +43,11 @@ html {
   --navigation-background-color: #161618;
   --tag-text-color: #678E87;
   --text-color-1: #bcac8f;
-  --text-color-2: #d66848;
+  --text-color-2: #bcac8f;
+  --text-color-3: #ccc;
+  --text-color-4: #bcac8f;
   --border-color-2: #bcac8f32;
-
+  --anchors-color: #d66848;
 }
 
 body {
@@ -134,7 +137,7 @@ button {
 }
 
 a {
-  color: var(--text-color-2);
+  color: var(--anchors-color);
 }
 
 button {
@@ -205,7 +208,7 @@ button {
     font-size: 0.675rem;
   }
   .nav-right {
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
 }
 

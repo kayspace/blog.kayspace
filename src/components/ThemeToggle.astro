@@ -1,0 +1,63 @@
+---
+
+---
+
+<button
+  id="theme-toggle"
+  class="theme-toggle"
+  aria-label="Toggle color theme"
+  aria-pressed="false">◪</button
+>
+
+<style>
+  .theme-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 2001;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    font-size: 1rem;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  }
+
+  @media (max-width: 480px) {
+    .theme-toggle {
+      bottom: 0.9rem;
+      right: 0.9rem;
+      font-size: 0.95rem;
+      padding: 0.35rem 0.45rem;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+
+    let saved = null;
+    try {
+      saved = localStorage.getItem("theme");
+    } catch (e) {}
+
+    const isDark = saved === "dark";
+    if (isDark) document.documentElement.classList.add("dark-theme");
+    else document.documentElement.classList.remove("dark-theme");
+
+    btn.textContent = isDark ? "◪" : "◩";
+    btn.setAttribute("aria-pressed", String(isDark));
+
+    btn.addEventListener("click", function () {
+      const nowDark = document.documentElement.classList.toggle("dark-theme");
+      try {
+        localStorage.setItem("theme", nowDark ? "dark" : "light");
+      } catch (e) {}
+      btn.textContent = nowDark ? "◪" : "◩";
+      btn.setAttribute("aria-pressed", String(nowDark));
+    });
+  })();
+</script>
